@@ -17,11 +17,14 @@ This repository contains Ansible playbooks with SSH scripts for creating a Kuber
 2. **Configure Ansible**: 
    - Edit an `inventory` file with your nodes details.
 
-4. **Deploy Kubernetes**:
+3. **Deploy Kubernetes**:
    - Run ansible playbook.
      ```bash
      ansible-playbook -i ./inventory playbook.yml
      ```
+
+4. **Cluster Creation**:
+   - Follow steps mention in this [repository](https://github.com/Tariq-Mehmood-Malik/Kubernetes-Cluster-Creation?tab=readme-ov-file#cluster-creation) & feel free to contact me if need any help.  
 
 ## Scripts and Playbooks
 - `ssh/ssh-connection.sh.sh`: Script to set up SSH access for your Ubuntu servers.
