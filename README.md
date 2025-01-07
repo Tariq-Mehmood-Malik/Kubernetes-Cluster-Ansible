@@ -10,9 +10,9 @@ This repository contains Ansible playbooks with SSH scripts for creating a Kuber
 
 1. **Run SSH Script**:
    - First edit & run `ssh-connection.sh` script to set up SSH access to all of your Ubuntu nodes.
-   - Please provide username in script and will be same for all nodes.
+   - Script will ask username which will be same for all nodes.
    - Script will ask for user password for each node to execute script.
-   - Make sure passwordless sudo previleges is set on each node for target user.
+   - Make sure passwordless sudo privileges is set on each node for target user.
      
 2. **Configure Ansible**: 
    - Edit an `inventory` file with your nodes details.
