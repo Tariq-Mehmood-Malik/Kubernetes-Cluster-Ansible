@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Prompt the user to enter the username for the nodes
+# Prompt the user to enter the username for the node
 echo "Please enter the username for the nodes:"
 read NODE_USER
 
