@@ -20,17 +20,13 @@ K8S_NODES=("IP-1" "IP-2" "IP-3")  # Example IPs, add more nodes if needed
 # Loop through the nodes and copy the public key to each node
 for NODE in "${K8S_NODES[@]}"; do
     echo "Copying SSH key to $NODE..."
-    ssh-copy-id -i ~/.ssh/id_rsa.pub "$NODE_USER@$NODE" || { echo "Error copying SSH key to $NODE"; exit 1; }
-    
-    # Add the user to the sudoers file on each node
-    echo "Adding $NODE_USER to the sudoers file on $NODE..."
-    ssh "$NODE_USER@$NODE" 'sudo grep -q "^'"$NODE_USER"' ALL=(ALL:ALL) ALL" /etc/sudoers || echo "'"$NODE_USER"' ALL=(ALL:ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers' || { echo "Error adding $NODE_USER to sudoers on $NODE"; exit 1; }
+    ssh-copy-id -i ~/.ssh/id_rsa.pub "$NODE_USER@$NODE" || { echo "Error copying SSH key to $NODE"; exit 1; }    
 done
 
 # Test SSH connectivity and passwordless sudo
-echo "Testing SSH connectivity and passwordless sudo to all nodes..."
+echo "Testing SSH connectivity ..."
 for NODE in "${K8S_NODES[@]}"; do
-    ssh -o BatchMode=yes -o ConnectTimeout=5 "$NODE_USER@$NODE" "echo Connection to $NODE successful! && sudo -n true && echo Passwordless sudo working on $NODE!" || { echo "Error testing SSH or sudo on $NODE"; exit 1; }
+    ssh -o BatchMode=yes -o ConnectTimeout=5 "$NODE_USER@$NODE" "echo Connection to $NODE successful! " || { echo "Error testing SSH"; exit 1; }
 done
 
-echo "SSH, sudoers, and passwordless sudo setup complete."
+echo "SSH setup complete."
