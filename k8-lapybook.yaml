@@ -1,0 +1,13 @@
+---
+- name: Setup Kubernetes on all Nodes
+  hosts: all          # Runn script on both master and worker nodes
+  become: yes
+  tasks:
+    - name: Download k8-ubuntu.sh script from GitHub
+      get_url:
+        url: https://github.com/
+        dest: /tmp/k8-ubuntu.sh
+        mode: '0755'
+
+    - name: Run the k8-ubuntu.sh script
+      command: /tmp/k8-ubuntu.sh
