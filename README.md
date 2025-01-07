@@ -1,11 +1,11 @@
 # Kubernetes Cluster Setup with Ansible
 
-This repository contains Ansible playbooks and SSH scripts for creating a Kubernetes cluster on Ubuntu nodes.
+This repository contains Ansible playbooks with SSH scripts for creating a Kubernetes cluster on Ubuntu nodes.
 
 ## Prerequisites
 - Ubuntu server nodes (at least 2) for the master and worker node.
-- SSH access to all nodes
-- Ansible installed on your local machine
+- SSH access to all nodes.
+- Ansible installed on your local machine.
 
 ## Setup Steps
 
