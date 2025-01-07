@@ -14,16 +14,19 @@ K8S_NODES=("IP-1/hostname" "IP-2/hostname" "IP-3/hostname")
 
 # Loop through the nodes and copy the public key to each node
 # Replace $USER with user name that is present on each node
-
 for NODE in "${K8S_NODES[@]}"; do
     echo "Copying SSH key to $NODE..."
     ssh-copy-id -i ~/.ssh/id_rsa.pub "$USER@$NODE"
+    
+    # Add the user to the sudoers file for passwordless sudo access
+    echo "Configuring passwordless sudo for $USER on $NODE..."
+    ssh "$USER@$NODE" "echo '$USER ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/$USER > /dev/null"
 done
 
-# Test SSH connectivity
-echo "Testing SSH connectivity to all nodes..."
+# Test SSH connectivity and passwordless sudo
+echo "Testing SSH connectivity and passwordless sudo to all nodes..."
 for NODE in "${K8S_NODES[@]}"; do
-    ssh -o BatchMode=yes -o ConnectTimeout=5 "$USER@$NODE" "echo Connection to $NODE successful!"
+    ssh -o BatchMode=yes -o ConnectTimeout=5 "$USER@$NODE" "echo Connection to $NODE successful! && sudo -n true && echo Passwordless sudo working on $NODE!"
 done
 
-echo "SSH setup complete."
+echo "SSH and passwordless sudo setup complete."
