@@ -3,9 +3,9 @@
   hosts: all          # Runn script on both master and worker nodes
   become: yes
   tasks:
-    - name: Download k8-ubuntu.sh script from GitHub
-      get_url:
-        url: https://github.com/
+    - name: Copy the k8-ubuntu.sh script to remote nodes
+      ansible.builtin.copy:
+        src: ./k8-ubuntu.sh
         dest: /tmp/k8-ubuntu.sh
         mode: '0755'
 
