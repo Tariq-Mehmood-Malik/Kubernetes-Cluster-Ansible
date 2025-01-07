@@ -11,3 +11,9 @@
 
     - name: Run the k8-ubuntu.sh script
       shell: /home/k8-ubuntu.sh
+      register: script_output
+      become: yes
+
+    - name: Display the output of the script
+      debug:
+        var: script_output
