@@ -13,7 +13,7 @@ This repository contains Ansible playbooks with SSH scripts for creating a Kuber
 
 2. **Configure Ansible**: 
    - Create an `inventory` file with your server details (master and worker nodes).
-   - Run the Ansible playbooks to set up Kubernetes.
+   - Make sure each node ansible user has passwordless sudo access.
 
 3. **Deploy Kubernetes**: The playbooks will deploy the Kubernetes cluster.
 
