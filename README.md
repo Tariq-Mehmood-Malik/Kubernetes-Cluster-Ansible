@@ -9,16 +9,22 @@ This repository contains Ansible playbooks with SSH scripts for creating a Kuber
 
 ## Setup Steps
 
-1. **Run SSH Script**: First, run the `scripts/setup_ssh.sh` script to set up SSH access to your Ubuntu nodes.
-
+1. **Run SSH Script**:
+   - First edit & run `ssh-connection.sh` script to set up SSH access to all of your Ubuntu nodes.
+   - Please note that username will be same for all nodes.
+   - Script will ask for user password for each node to execute script.
+     
 2. **Configure Ansible**: 
-   - Create an `inventory` file with your server details (master and worker nodes).
-   - Make sure each node ansible user has passwordless sudo access.
+   - Edit an `inventory` file with your nodes details.
+   - Run ansible playbook.
+     ```bash
+     ansible-playbook -i ./inventory playbook.yml
+     ```
 
-3. **Deploy Kubernetes**: The playbooks will deploy the Kubernetes cluster.
+4. **Deploy Kubernetes**: The playbooks will deploy the Kubernetes cluster.
 
 ## Scripts and Playbooks
-- `scripts/setup_ssh.sh`: Script to set up SSH access for your Ubuntu servers.
-- `ansible/setup_k8s_master.yml`: Ansible playbook to configure Kubernetes master node.
-- `ansible/setup_k8s_worker.yml`: Ansible playbook to configure Kubernetes worker nodes.
+- `ssh/ssh-connection.sh.sh`: Script to set up SSH access for your Ubuntu servers.
+- `ansible/playbook.yml`: Ansible playbook to configure Kubernetes on all nodes.
+- `ansible/inventory.ini`: Inventory file with all nodes details.
 
