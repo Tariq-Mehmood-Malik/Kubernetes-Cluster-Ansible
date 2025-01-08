@@ -20,14 +20,17 @@ This repository contains Ansible playbooks with shell script for installing Kube
 
 3. **Deploy Kubernetes**:
    - Run ansible playbook.
+     
      ```bash
      ansible-playbook -i ./inventory.ini playbook.yaml
      ```
      ***
    - If  `passwordless sudo privileges` are set try run below command:
+     
      ```bash
      ansible-playbook -i ./inventory.ini playbook.yaml --ask-become-pass
      ```
+     
      Make sure each node has same username & password.
 
 
