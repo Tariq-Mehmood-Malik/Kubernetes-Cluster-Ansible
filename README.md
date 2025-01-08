@@ -10,7 +10,7 @@ This repository contains Ansible playbooks with shell script for installing Kube
 
 1. **Run SSH Script (Optional)**:
    - Perform this step if your Ansible Infrastructure is not set.
-   - Edit & run `ssh-connection.sh` script on controller machine to set up SSH access to all of your nodes.
+   - Add nodes hostanme OR IPs & run `ssh-connection.sh` script on controller machine to set up SSH access to all of your nodes.
    - Script will ask username, which will be same for all nodes (you can modify script if each node has different username).
    - Script will ask for user password, which will be same for all nodes (you can modify script if each node has different password).
    - Make sure `passwordless sudo privileges` is set on each node for target user.
