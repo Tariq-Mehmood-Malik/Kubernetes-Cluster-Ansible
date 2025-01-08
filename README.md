@@ -31,7 +31,7 @@ This repository contains Ansible playbooks with shell script for installing Kube
      ansible-playbook -i ./inventory.ini playbook.yaml --ask-become-pass
      ```
      
-     Make sure each node has same username & password.
+     Make sure each node has same password.
 
 
 4. **Cluster Creation**:
