@@ -10,10 +10,9 @@
         mode: '0755'
 
     - name: Run the k8-ubuntu.sh script
-      shell: /home/k8-ubuntu.sh
-      register: script_output
-      become: yes
+      shell: bash /tmp/k8-ubuntu.sh  
 
-    - name: Display the output of the script
-      debug:
-        var: script_output
+    - name: Remove the k8-ubuntu.sh script after execution
+      file:
+        path: /tmp/k8-ubuntu.sh
+        state: absent
