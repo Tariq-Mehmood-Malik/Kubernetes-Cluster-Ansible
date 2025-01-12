@@ -6,7 +6,7 @@
     - name: Copy the k8-ubuntu.sh script to remote nodes
       copy:
         src: ./k8-ubuntu.sh
-        dest: /home/k8-ubuntu.sh
+        dest: /tmp/k8-ubuntu.sh
         mode: '0755'
 
     - name: Run the k8-ubuntu.sh script
